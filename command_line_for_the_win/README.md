@@ -1,0 +1,1 @@
+This task involved answering questions related to the command line, inaddition to demonstrating the use of the SFTP (Secure File Transfer Protocol) command-line tool to move local screenshots to the sandbox environment.
