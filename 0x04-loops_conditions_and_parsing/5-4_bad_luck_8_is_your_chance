@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# a script that uses a while loop to display bad luck for the 4th loop iteration, good luck for the 8th loop iteration, Best Shool for the other iterations
+o=0
+while [ $o -lt 10 ]
+do
+    ((o++))
+    if [ $o -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $o -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+done
