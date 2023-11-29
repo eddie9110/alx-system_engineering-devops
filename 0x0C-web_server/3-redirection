@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#301 redirection in nginx server
+
+sudo apt-get update
+sudo apt-get install -y nginx
+
+echo "Hello World!" > /var/www/html/index.html
+replaced_string="server_name _;\n\trewrite ^\/redirect_me Location: https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;"
+sudo sed -i "s/server_name _;/$replaced_string/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
