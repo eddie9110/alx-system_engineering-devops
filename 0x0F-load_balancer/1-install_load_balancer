@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Installing and configuring HAproxy on lb-01 load balancing server.
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+replacement="\nfrontend edwin_frontend\n\tbind *:80\n\tdefault_backend edwin_backend\n\nbackend edwin_backend\n\tbalance roundrobin\n\tserver 340893-web-01 100.26.234.90:80 check\n\tserver 340893-web-02 52.3.255.201:80 check"
+
+sudo echo -e $replacement >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart

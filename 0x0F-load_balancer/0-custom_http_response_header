@@ -20,4 +20,6 @@ sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/site
 
 #error checking and reloading
 sudo nginx -t
-sudo service nginx reload
+
+#restarting nginx for changes to take effect
+sudo service nginx restart
