@@ -3,8 +3,6 @@
 
 import requests
 
-url = "http://www.reddit.com/r/{}/about.json"
-
 
 def number_of_subscribers(subreddit):
     """
@@ -12,6 +10,7 @@ def number_of_subscribers(subreddit):
     """
     if subreddit is None:
         return 0
-    res_ponse = requests.get(url.format(subreddit),
-                             headers={"User-Agent": "Agent Edwin"})
-    return res_ponse.json().get("data", {}).get("subscribers", 0)
+    url = "http://www.reddit.com/r/{}/about.json"
+    user_agent = {"User-Agent": "Agent Edwin"}
+    res_ponse = requests.get(url.format(subreddit), headers=user_agent).json()
+    return res_ponse.get("data", {}).get("subscribers", 0)
