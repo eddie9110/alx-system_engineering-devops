@@ -4,13 +4,14 @@
 import requests
 
 
-def number_of_subscribers(subreddit):
+def number_of_subscribers(subreddit) -> int:
     """
     Return the no. of subscribers
     """
-    if subreddit is None:
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    try:
+        request = requests.get(url, headers={'User-Agent': 'Agent Edwin'})
+        response = request.json()
+        return response['data']['subscribers']
+    except Exception:
         return 0
-    url = "http://www.reddit.com/r/{}/about.json"
-    user_agent = {"User-Agent": "Agent Edwin"}
-    res_ponse = requests.get(url.format(subreddit), headers=user_agent).json()
-    return res_ponse.get("data", {}).get("subscribers", 0)
